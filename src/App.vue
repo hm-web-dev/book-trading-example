@@ -1,6 +1,7 @@
 <script lang="ts">
 import NavBar from './components/NavBar.vue'
 import type { Trade, OutgoingTrade } from '../shared/book'
+
 export default {
   components: { NavBar },
   data() {
@@ -59,6 +60,8 @@ export default {
   methods: {
     createTrade(trade: OutgoingTrade) {
       this.outgoingTrades.push(trade)
+    },
+    acceptTrade(tradeId: number){
     }
   }
 }
