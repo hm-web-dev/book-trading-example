@@ -50,11 +50,21 @@ export default {
     },
     methods: {
         acceptTrade(tradeId: number): void {
-            // Implement accept logic
+          const acceptedTrade = this.incomingTrades.find(trade => trade.id === tradeId);
+            // remove incoming trade
+            if (acceptedTrade){
+            // eslint-disable-next-line vue/no-mutating-props
+            this.incomingTrades = this.incomingTrades.filter(trade => trade.id !== tradeId);
+            this.tradeHistory.push(acceptedTrade);
+            }
+            this.$emit('trade-accepted', acceptedTrade);
         },
+
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         declineTrade(tradeId: number): void {
             // Implement decline logic
         },
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         cancelTrade(tradeId: number): void {
 
         }
