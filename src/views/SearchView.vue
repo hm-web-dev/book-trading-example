@@ -10,8 +10,7 @@
         </div>
         <div class="search-results">
             <div v-for="book in searchResults" :key="book.id" class="book-item">
-                <h3>{{ book.title }}</h3>
-                <p>{{ book.author }}</p>
+                <BookView :book="book" />
                 <button @click="() => { showModal = true; chooseBook = book }">Offer Trade</button>
 
             </div>
@@ -28,6 +27,8 @@
 </template>
 
 <script lang="ts">
+import BookView from '@/components/BookThumbnail.vue'
+
 import type { Book, OutgoingTrade } from '../../shared/book'
 
 export default {
@@ -87,12 +88,18 @@ export default {
             }
             this.$emit('createTrade', trade);
         }
+    },
+    components: {
+        BookView // child component
     }
 }
 </script>
 
 <style scoped>
 .modal-content {
+    position: absolute;
+    top: 50%;
+    background-color: #222;
     margin: 5% auto;
     padding: 20px;
     border: 1px solid #888;
