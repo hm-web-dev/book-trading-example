@@ -1,6 +1,7 @@
 <script lang="ts">
 import NavBar from './components/NavBar.vue'
 import type { Trade, OutgoingTrade } from '../shared/book'
+
 export default {
   components: { NavBar },
   data() {
@@ -59,6 +60,10 @@ export default {
   methods: {
     createTrade(trade: OutgoingTrade) {
       this.outgoingTrades.push(trade)
+    },
+    acceptTrade(trade: Trade){
+      this.tradeHistory.push(trade);
+      this.incomingTrades = this.incomingTrades.filter(t => t.id !== trade.id);
     }
   }
 }
@@ -70,6 +75,7 @@ export default {
   <NavBar></NavBar>
 
 
-  <RouterView @create-trade="createTrade" :tradeHistory="tradeHistory" :outgoingTrades="outgoingTrades"
+  <RouterView @trade-accepted = "acceptTrade"
+  @create-trade="createTrade" :tradeHistory="tradeHistory" :outgoingTrades="outgoingTrades"
     :incomingTrades="incomingTrades" />
 </template>

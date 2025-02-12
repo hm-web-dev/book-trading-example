@@ -3,7 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import AccountView from '../views/AccountView.vue'
 import SearchView from '../views/SearchView.vue'
 import TradesView from '../views/TradesView.vue'
-
+import BookView from '../views/BookView.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -16,6 +16,12 @@ const router = createRouter({
       path: '/account',
       name: 'account',
       component: AccountView
+    },
+    {
+      path: '/book/:isbn',
+      name: 'book',
+      props: true,
+      component: BookView,
     },
     {
       path: '/search',

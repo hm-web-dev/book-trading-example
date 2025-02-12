@@ -30,6 +30,7 @@
 import BookView from '@/components/BookThumbnail.vue'
 
 import type { Book, OutgoingTrade } from '../../shared/book'
+import BookView from '@/components/BookView.vue'
 
 export default {
     data() {
@@ -77,7 +78,7 @@ export default {
         },
         createTrade(): void {
 
-            // emit trade to parent component 
+            // emit trade to parent component
             const trade: OutgoingTrade = {
                 book: this.chooseBook,
                 offeredTo: this.sendTo,

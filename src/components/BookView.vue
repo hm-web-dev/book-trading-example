@@ -7,13 +7,12 @@
 
 <script lang="ts">
 export default {
-    props: {
+  props: {
         book: {
             cover: String,
             title: String,
             author: String
         }
     }
-
 }
 </script>

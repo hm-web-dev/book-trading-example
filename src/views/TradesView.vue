@@ -11,7 +11,7 @@
                         <p>Status: {{ trade.status }}</p>
                     </div>
                     <div class="trade-actions">
-                        <button class="accept-btn" @click="acceptTrade(trade.id)">Accept</button>
+                        <button class="accept-btn" @click="acceptTrade(trade)">Accept</button>
                         <button class="decline-btn" @click="declineTrade(trade.id)">Decline</button>
                     </div>
                 </div>
@@ -38,9 +38,14 @@
 
 <script lang="ts">
 
-import type { Trade, OutgoingTrade } from '../../shared/book'
+import type { Trade, OutgoingTrade } from '../../shared/book';
+import BookView from '@/components/BookView.vue';
+
 export default {
-    data() {
+  components: {
+      BookView
+    },
+  data() {
         return {
         }
     },
@@ -48,17 +53,22 @@ export default {
         incomingTrades: Array<Trade>,
         outgoingTrades: Array<OutgoingTrade>,
     },
+    emits: ['trade-accepted'],
     methods: {
-        acceptTrade(tradeId: number): void {
-            // Implement accept logic
+        acceptTrade(tradeId: Trade): void {
+          this.$emit('trade-accepted', tradeId);
         },
+
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         declineTrade(tradeId: number): void {
             // Implement decline logic
         },
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         cancelTrade(tradeId: number): void {
 
         }
-    }
+    },
+
 }
 </script>
 
