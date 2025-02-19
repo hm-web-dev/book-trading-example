@@ -30,7 +30,6 @@
 import BookView from '@/components/BookThumbnail.vue'
 
 import type { Book, OutgoingTrade } from '../../shared/book'
-import BookView from '@/components/BookView.vue'
 
 export default {
     data() {
