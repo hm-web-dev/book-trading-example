@@ -61,7 +61,7 @@ export default {
     createTrade(trade: OutgoingTrade) {
       this.outgoingTrades.push(trade)
     },
-    acceptTrade(trade: Trade){
+    acceptTrade(trade: Trade) {
       this.tradeHistory.push(trade);
       this.incomingTrades = this.incomingTrades.filter(t => t.id !== trade.id);
     }
@@ -75,7 +75,6 @@ export default {
   <NavBar></NavBar>
 
 
-  <RouterView @trade-accepted = "acceptTrade"
-  @create-trade="createTrade" :tradeHistory="tradeHistory" :outgoingTrades="outgoingTrades"
-    :incomingTrades="incomingTrades" />
+  <RouterView @trade-accepted="acceptTrade" @create-trade="createTrade" :tradeHistory="tradeHistory"
+    :outgoingTrades="outgoingTrades" :incomingTrades="incomingTrades" :account_id="2" />
 </template>
